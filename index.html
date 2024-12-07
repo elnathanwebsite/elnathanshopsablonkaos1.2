@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elnathansablonkaos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #ffffff;
+        }
+        
+        header {
+            background-color: #ffffff;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        header img {
+            width: 80px;
+            height: 50px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            margin-left: 10px;
+            font-size: 24px;
+        }
+        
+        .audio-controls {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        .audio-controls button {
+            background-color: #555;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        .container {
+            padding: 20px;
+        }
+        
+        .tshirt-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .tshirt-preview {
+            width: 300px;
+            height: 400px;
+            background-color: rgb(255, 255, 255);
+            margin: 10px;
+            border: 1px solid #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tshirt-preview img {
+            max-width: 100%;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transform-origin: 0 0;
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .upload-section {
+            margin-top: 20px;
+        }
+        
+        #upload-input,
+        #upload-input-2,
+        #upload-input-3,
+        #upload-input-4 {
+            margin-top: 10px;
+        }
+        
+        .resize-controls {
+            margin-top: 20px;
+        }
+        
+        .download-section {
+            margin-top: 20px;
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .upload-section {
+            margin-top: 20px;
+        }
+        
+        .custom-file-upload {
+            display: inline-block;
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #000000;
+            color: white;
+            border-radius: 9px;
+            margin-right: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            /* Add transition for transform */
+        }
+        
+        .custom-file-upload:hover {
+            background-color: #ffffff;
+            /* Change background color on hover */
+            transform: scale(1.1);
+            /* Enlarge the button */
+        }
+        
+        .custom-file-upload:active {
+            transform: scale(0.9);
+            /* Slightly shrink the button when clicked */
+        }
+        
+        .upload-input {
+            display: none;
+            /* Hide the default file input */
+        }
+        
+        .upload-instructions {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #000000;
+        }
+        
+        .upload-button-container {
+            margin-bottom: 15px;
+            /* Space between each upload button */
+        }
+        
+        .upload-button-container label {
+            margin-right: 10px;
+            /* Space between label and input */
+        }
+        
+        .download-section {
+            display: flex;
+            /* Use flexbox for horizontal layout */
+            justify-content: center;
+            /* Center the buttons horizontally */
+            flex-wrap: wrap;
+            /* Allow wrapping to the next line if necessary */
+            margin-top: 20px;
+            /* Space above the download section */
+        }
+        
+        .download-button-container {
+            margin: 2px;
+            /* Space between each download button */
+        }
+        
+        .download-button-container button {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .download-button-container button:hover {
+            background-color: #000000;
+            /* Change background color on hover */
+        }
+        
+        .download-button-container button {
+            padding: 10px 20px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            /* Add transition for transform */
+        }
+        
+        .download-button-container button:hover {
+            background-color: #000000;
+            /* Change background color on hover */
+            transform: scale(1.1);
+            /* Enlarge the button */
+        }
+        
+        .download-button-container button:active {
+            transform: scale(0.9);
+            /* Slightly shrink the button when clicked */
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .contact-info button {
+            background-color: #000000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-info button:hover {
+            background-color: #ffffff;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+        }
+        /* Gaya umum header */
+        /* Gaya logo dan nama */
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        /* Gaya tombol dalam header */
+        
+        .audio-controls {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .audio-controls button {
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        #play-pause-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        #toggle-mode {
+            background-color: #333;
+            color: #f4f4f4;
+        }
+        
+        .audio-controls button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+        /* Gaya default */
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        /* Gaya untuk mode gelap */
+        
+        body.dark-mode {
+            background-color: #000000;
+            /* Warna latar belakang gelap */
+            color: #f4f4f4;
+            /* Warna teks terang */
+        }
+        /* Header dalam mode gelap */
+        
+        header.dark-mode {
+            background-color: #000000;
+            /* Header menjadi lebih gelap */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            /* Shadow lebih pekat */
+        }
+        /* Tombol dalam mode gelap */
+        
+        .audio-controls button {
+            transition: background-color 0.3s, color 0.3s;
+        }
+        
+        .audio-controls button.dark-mode {
+            background-color: #444;
+            color: #f4f4f4;
+        }
+        
+        .audio-controls button.dark-mode:hover {
+            background-color: #555;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        
+        .image-container {
+            margin-top: 20px;
+        }
+        
+        .custom-image {
+            width: 100px;
+            /* Lebar gambar */
+            height: px;
+            /* Tinggi gambar */
+            border: 2px solid #333;
+            /* Batas gambar */
+            border-radius: 10px;
+            /* Sudut gambar yang melengkung */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!-- Logo dan Nama Website -->
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/b0/ea/b2/b0eab210789378c9bb0e3060e8a45c69.jpg" alt="Logo">
+            <h1>EL NATHAN SABLON KAOS</h1>
+        </div>
+        <div class="audio-controls">
+            <button id="play-pause-btn">PLAY MUSIC</button>
+            <button id="toggle-mode">Mode Gelap</button>
+        </div>
+    </header>
+
+    <div class="section">
+        <h2>Head Office - Pangkal Pinang</h2>
+        <p> Selindung Baru, Kec. Gabek, Kota Pangkal Pinang, Kepulauan Bangka Belitung 33115</p>
+        <div class="contact-info">
+            <button onclick="window.location.href='https://www.google.com/maps/place/EL+NATHAN+SHOP/@-2.0826127,106.1268132,21z/data=!4m6!3m5!1s0x2e22c14155b0e6f5:0xb7b15c5121069db0!8m2!3d-2.0930774!4d106.1117912!16s%2Fg%2F11wmh2svy4?entry=ttu&g_ep=EgoyMDI0MTIwNC4wIKXMDSoASAFQAw%3D%3D'">
+                <i class="fas fa-map-marker-alt"></i> Titik Lokasi
+            </button>
+        </div>
+
+        <i class="fas fa-clock">
+            <br> Sabtu Tutup
+            Minggu Tutup</li> 
+            > Buka Senin 08.00–22.00 sd Jumat 08.00–22.30
+           
+    </div>
+    <i class="fas fa-map-marker-alt"></i>
+        <a href="https://shopee.co.id/ethanelnathan1">LANGSUNG BELI KAOS CUSTOM DI EL NATHAN SHOP</a>
+        <div>
+            <br> Web Versi 1.2</li>
+            <br> Versi Baru, Ubah Header, Ubah lagu, Tambahan Mode Gelap, Perbaikan posisi gambar, Perbaikan Tombol Ubah Ukuran, Penambahan Galeri</li>
+        </div>
+        <div class="image-container"> <img src="https://i.pinimg.com/736x/4c/62/b5/4c62b53609d6833f2c629c75eeac5e01.jpg" alt="Gambar dari URL" class="custom-image">
+        </div>
+
+        <div class="container">
+            <h2>Pilih desain dan cobain di kaos premium ini bree!</h2>
+
+            <!-- Tempat empat kaos -->
+
+            <div class="tshirt-container">
+                <div class="tshirt-preview" id="tshirt-preview">
+                    <img id="kaos-base" src="https://i.pinimg.com/736x/dc/10/a7/dc10a72dcc5437a2614554ae3f54fb07.jpg" alt="Kaos Kosong">
+                    <img id="design-overlay" src="#" alt="Desain Anda" style="display:none;">
+                </div>
+                <div class="resize-controls">
+                    <label for="size-slider">Atur ukuran desain kaos 1: </label>
+                    <input type="range" id="size-slider" min="10" max="100" value="50" oninput="resizeDesign(this.value, 'design-overlay')">
+                </div>
+            </div>
+
+            <div class="tshirt-container">
+                <div class="tshirt-preview" id="tshirt-preview-2">
+                    <img id="kaos-base-2" src="https://i.pinimg.com/736x/9b/85/3c/9b853c8fb80d978637f3b0a14dbba98d.jpg" alt="Kaos Kosong">
+                    <img id="design-overlay-2" src="#" alt="Desain Anda" style="display:none;">
+                </div>
+                <div class="resize-controls">
+                    <label for="size-slider-2">Atur ukuran desain kaos 2: </label>
+                    <input type="range" id="size-slider-2" min="10" max="100" value="50" oninput="resizeDesign(this.value, 'design-overlay-2')">
+                </div>
+            </div>
+
+            <div class="tshirt-container">
+                <div class="tshirt-preview" id="tshirt-preview-3">
+                    <img id="kaos-base-3" src="https://i.pinimg.com/736x/c1/2d/96/c12d96da40f913b48e56373be1f25120.jpg" alt="Kaos Kosong">
+                    <img id="design-overlay-3" src="#" alt="Desain Anda" style="display:none;">
+                </div>
+                <div class="resize-controls">
+                    <label for="size-slider-3">Atur ukuran desain kaos 3: </label>
+                    <input type="range" id="size-slider-3" min="10" max="100" value="50" oninput="resizeDesign(this.value, 'design-overlay-3')">
+                </div>
+            </div>
+
+            <div class="tshirt-container">
+                <div class="tshirt-preview" id="tshirt-preview-4">
+                    <img id="kaos-base-4" src="https://i.pinimg.com/736x/c0/55/3b/c0553b7e8f0d2471d4cf5ee842331199.jpg" alt="Kaos Kosong">
+                    <img id="design-overlay-4" src="#" alt="Desain Anda" style="display:none;">
+                </div>
+                <div class="resize-controls">
+                    <label for="size-slider-4">Atur ukuran desain kaos 4: </label>
+                    <input type="range" id="size-slider-4" min="10" max="100" value="50" oninput="resizeDesign(this.value, 'design-overlay-4')">
+                </div>
+            </div>
+
+
+            <!-- Bagian untuk upload gambar -->
+            <!-- Bagian untuk upload gambar -->
+            <!-- Bagian untuk upload gambar -->
+            <div class="upload-section">
+                <div class="upload-button-container">
+                    <label for="upload-input" class="custom-file-upload">Upload Desain 1</label>
+                    <input type="file" id="upload-input" accept="image/*" onchange="loadFile(event, 'design-overlay')" class="upload-input">
+                </div>
+
+                <div class="upload-button-container">
+                    <label for="upload-input-2" class="custom-file-upload">Upload Desain 2</label>
+                    <input type="file" id="upload-input-2" accept="image/*" onchange="loadFile(event, 'design-overlay-2')" class="upload-input">
+                </div>
+
+                <div class="upload-button-container">
+                    <label for="upload-input-3" class="custom-file-upload">Upload Desain 3</label>
+                    <input type="file" id="upload-input-3" accept="image/*" onchange="loadFile(event, 'design-overlay-3')" class="upload-input">
+                </div>
+
+                <div class="upload-button-container">
+                    <label for="upload-input-4" class="custom-file-upload">Upload Desain 4</label>
+                    <input type="file" id="upload-input-4" accept="image/*" onchange="loadFile(event, 'design-overlay-4')" class="upload-input">
+                </div>
+
+                <p class="upload-instructions">Upload desain Anda (format: jpg, png)</p>
+            </div>
+
+
+            <!-- Tombol download -->
+            <div class="download-section">
+                <div class="download-button-container">
+                    <button onclick="downloadImage('kaos-base', 'design-overlay')">Download Kaos 1</button>
+                </div>
+                <div class="download-button-container">
+                    <button onclick="downloadImage('kaos-base-2', 'design-overlay-2')">Download Kaos 2</button>
+                </div>
+                <div class="download-button-container">
+                    <button onclick="downloadImage('kaos-base-3', 'design-overlay-3')">Download Kaos 3</button>
+                </div>
+                <div class="download-button-container">
+                    <button onclick="downloadImage('kaos-base-4', 'design-overlay-4')">Download Kaos 4</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="foto-section">
+        <h1>Galeri Desain Kaos</h1>
+        <img src="https://lh3.googleusercontent.com/p/AF1QipPF6cHnecNPnK5Lfg6cTA-GcAHiwnVTZV2vNCWU=s1360-w1360-h1020" alt="Desain Kaos 2" style="max-width: 100%; height: auto;">
+        <img src="https://i.pinimg.com/736x/24/6c/06/246c06a5406c6233a7b865c7c6284a64.jpg" alt="Desain Kaos 1" style="max-width: 100%; height: auto;">
+        <img src="https://i.pinimg.com/736x/60/6d/43/606d435df0fd1554dba77f5c60a19c83.jpg" alt="Desain Kaos 2" style="max-width: 100%; height: auto;">
+        <img src="https://i.pinimg.com/736x/3b/60/d8/3b60d80a0568c387efcc04b1f48a589c.jpg" alt="Desain Kaos 2" style="max-width: 100%; height: auto;">
+        <img src="https://i.pinimg.com/736x/17/8d/fc/178dfc4d22beca3586675a6613dc1583.jpg" alt="Desain Kaos 2" style="max-width: 100%; height: auto;">
+
+    </div>
+
+    <footer>
+        &copy; develop by Arifan
+    </footer>
+
+    <!-- Elemen audio untuk memainkan musik -->
+    <audio id="background-audio" src="ytmp3free.cc_starlight-x-stereo-youtubemp3free.org.mp3" preload="auto" loop></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const audio = document.getElementById('background-audio');
+            const playPauseBtn = document.getElementById('play-pause-btn');
+
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    audio.play().catch(function(error) {
+                        console.log("Auto-play was prevented:", error);
+                    });
+                    playPauseBtn.textContent = 'Pause';
+                } else {
+                    audio.pause();
+                    playPauseBtn.textContent = 'Play';
+                }
+            });
+
+            // Set up touch dragging and zoom functionalities for all overlays
+            setupTouchDrag('design-overlay');
+            setupTouchDrag('design-overlay-2');
+            setupTouchDrag('design-overlay-3');
+            setupTouchDrag('design-overlay-4');
+        });
+
+        function loadFile(event, overlayId) {
+            const designOverlay = document.getElementById(overlayId);
+            designOverlay.src = URL.createObjectURL(event.target.files[0]);
+            designOverlay.style.display = 'block'; // Menampilkan desain yang diupload
+        }
+
+        function resizeDesign(value, overlayId) {
+            const designOverlay = document.getElementById(overlayId);
+            designOverlay.style.maxWidth = value + '%';
+        }
+
+        function downloadImage(kaosId, overlayId) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const kaosBase = document.getElementById(kaosId);
+            const designOverlay = document.getElementById(overlayId);
+
+            canvas.width = kaosBase.width;
+            canvas.height = kaosBase.height;
+            ctx.drawImage(kaosBase, 0, 0);
+            ctx.drawImage(designOverlay, 0, 0, canvas.width, canvas.height);
+
+            const link = document.createElement('a');
+            link.download = 'kaos_design.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function setupTouchDrag(overlayId) {
+            const designOverlay = document.getElementById(overlayId);
+            let startX, startY, initialX, initialY;
+
+            designOverlay.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                startX = touch.pageX;
+                startY = touch.pageY;
+                initialX = designOverlay.offsetLeft;
+                initialY = designOverlay.offsetTop;
+            });
+
+            designOverlay.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                const deltaX = touch.pageX - startX;
+                const deltaY = touch.pageY - startY;
+                designOverlay.style.left = (initialX + deltaX) + 'px';
+                designOverlay.style.top = (initialY + deltaY) + 'px';
+            });
+
+            designOverlay.addEventListener('touchend', (e) => {
+                // Optional: Add any behavior for touch end
+            });
+        }
+
+        function setupTouchDrag(overlayId) {
+            const designOverlay = document.getElementById(overlayId);
+            let startX, startY, initialX, initialY;
+            let isDragging = false;
+
+            // Event listener untuk sentuhan
+            designOverlay.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                startX = touch.pageX;
+                startY = touch.pageY;
+                initialX = designOverlay.offsetLeft;
+                initialY = designOverlay.offsetTop;
+                isDragging = true; // Set dragging to true
+            });
+
+            designOverlay.addEventListener('touchmove', (e) => {
+                if (!isDragging) return; // Jika tidak sedang drag, keluar
+                e.preventDefault();
+                const touch = e.touches[0];
+                const deltaX = touch.pageX - startX;
+                const deltaY = touch.pageY - startY;
+                designOverlay.style.left = (initialX + deltaX) + 'px';
+                designOverlay.style.top = (initialY + deltaY) + 'px';
+            });
+
+            designOverlay.addEventListener('touchend', () => {
+                isDragging = false; // Set dragging to false
+            });
+
+            // Event listener untuk mouse
+            designOverlay.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                startX = e.pageX;
+                startY = e.pageY;
+                initialX = designOverlay.offsetLeft;
+                initialY = designOverlay.offsetTop;
+                isDragging = true; // Set dragging to true
+            });
+
+            designOverlay.addEventListener('mousemove', (e) => {
+                if (!isDragging) return; // Jika tidak sedang drag, keluar
+                e.preventDefault();
+                const deltaX = e.pageX - startX;
+                const deltaY = e.pageY - startY;
+                designOverlay.style.left = (initialX + deltaX) + 'px';
+                designOverlay.style.top = (initialY + deltaY) + 'px';
+            });
+
+            designOverlay.addEventListener('mouseup', () => {
+                isDragging = false; // Set dragging to false
+            });
+
+            // Untuk menangani mouse keluar dari elemen
+            designOverlay.addEventListener('mouseleave', () => {
+                isDragging = false; // Set dragging to false
+            });
+        }
+        const toggleButton = document.getElementById('toggle-mode');
+
+        // Fungsi toggle dark mode
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ?
+                'Mode Terang' :
+                'Mode Gelap';
+        });
+    </script>
+
+    </script>
+</body>
+
+</html>
+<script async data-explicit-opt-in="true" data-cookie-opt-in="true" src="https://vercel.live/_next-live/feedback/feedback.js"></script>
+});
+</script>
+
+</script>
+</body>
+
+</html>
+<script async data-explicit-opt-in="true" data-cookie-opt-in="true" src="https://vercel.live/_next-live/feedback/feedback.js"></script>
